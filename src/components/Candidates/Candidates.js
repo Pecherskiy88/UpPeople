@@ -109,7 +109,7 @@ export default class Candidates extends Component {
 
   requestForCandidatesForStaff = currentPage => {
     getCandidates(currentPage).then(candidatesData => {
-      console.log(candidatesData);
+      // console.log(candidatesData);
       this.setState({
         candidatesData: { ...this.state.candidatesData, ...candidatesData }
       });

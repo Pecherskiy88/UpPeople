@@ -73,7 +73,7 @@ class DefaultLayout extends Component {
       globalSearchText: "",
       results: !this.state.results
     });
-    console.log("object with global search: ", obj.search);
+    console.log("object with global search: ", obj);
 
     const getToken = () => localStorage.getItem("token");
     const token = getToken();

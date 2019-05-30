@@ -1,26 +1,29 @@
 import React from "react";
-import ResultsCandidates from "./ResultsCandidates";
-import ResultsCompanies from "./ResultsCompanies";
-import Loader from "react-loader-spinner";
+import s from "./Results.module.css";
+import ResultsListCompanies from "./ResultsListCompanies";
+import ResultsListCandidates from "./ResultsListCandidates";
+import ResultsListVacancies from "./ResultsListVacancies";
+import ResultsListContacts from "./ResultsListContacts";
 
 const Results = ({ globalDataObj }) => {
+  console.log("globalDataObj: ", globalDataObj);
+
   console.log("candidates: ", globalDataObj.candidates);
   console.log("companies: ", globalDataObj.companies);
+  console.log("contacts: ", globalDataObj.contacts);
+  console.log("vacancies: ", globalDataObj.vacancies);
   const candidates = globalDataObj.candidates;
   const companies = globalDataObj.companies;
+  const contacts = globalDataObj.contacts;
+  const vacancies = globalDataObj.vacancies;
+
   return (
-    <ul>
-      {candidates ? (
-        candidates.map(el => <ResultsCandidates units={el} />)
-      ) : (
-        <Loader type="Plane" color="#00BFFF" height="100" width="100" />
-      )}
-      {companies ? (
-        companies.map(el => <ResultsCompanies places={el} />)
-      ) : (
-        <Loader type="Plane" color="#00BFFF" height="100" width="100" />
-      )}
-    </ul>
+    <div className={s.ResultsWrapper}>
+      <ResultsListCompanies companies={companies} />
+      <ResultsListCandidates candidates={candidates} />
+      <ResultsListVacancies vacancies={vacancies} />
+      <ResultsListContacts contacts={contacts} />
+    </div>
   );
 };
 
