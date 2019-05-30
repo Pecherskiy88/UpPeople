@@ -51,7 +51,7 @@ class DefaultLayout extends Component {
   state = {
     ...INITIAL_STATE,
     globalSearchText: "",
-    globalDataArr: [],
+    globalDataObj: {},
     results: false
   };
 
@@ -67,13 +67,13 @@ class DefaultLayout extends Component {
   };
   globalSearchSubmit = e => {
     e.preventDefault();
-    const obj = { globalSearchText: this.state.globalSearchText };
+    const obj = { search: this.state.globalSearchText };
 
     this.setState({
       globalSearchText: "",
       results: !this.state.results
     });
-    console.log("object with global search: ", obj.globalSearchText);
+    console.log("object with global search: ", obj.search);
 
     const getToken = () => localStorage.getItem("token");
     const token = getToken();
@@ -86,7 +86,12 @@ class DefaultLayout extends Component {
       body: JSON.stringify(obj)
     })
       .then(response => response.json())
-      .then(data => console.log("data: ", data))
+      // .then(data => console.log("data: ", data))
+      .then(data =>
+        this.setState({
+          globalDataObj: data
+        })
+      )
       .catch(err => console.log(err));
   };
   // тестирую инпут ================================
@@ -289,7 +294,7 @@ class DefaultLayout extends Component {
               <Container fluid>
                 {/* тестирую компонент results======================= */}
                 {this.state.results ? (
-                  <Results />
+                  <Results globalDataObj={this.state.globalDataObj} />
                 ) : (
                   <Suspense fallback={this.loading()}>
                     <Switch>
