@@ -116,6 +116,10 @@ const Compose = React.lazy(() => import("./components/Email/Compose"));
 const Inbox = React.lazy(() => import("./components/Email/Inbox"));
 const Message = React.lazy(() => import("./components/Email/Message"));
 
+//================================Тестирую новый компонент для роута==========================
+const Results = React.lazy(() => import("./components/Results/Results"));
+//================================Тестирую новый компонент для роута==========================
+
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
   { path: "/", name: "Home", component: DefaultLayout, exact: true },
@@ -279,6 +283,14 @@ const routes = [
     name: "Companies",
     component: Companies
   },
+  //=======================Тестирую новый роут=========
+  {
+    path: "/results",
+    exact: true,
+    name: "Results",
+    component: Results
+  },
+  //=======================Тестирую новый роут=========
   {
     path: "/companies/:id",
     exact: true,

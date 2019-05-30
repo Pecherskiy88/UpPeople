@@ -26,10 +26,12 @@ import freelancerNav from "../../_freelancer_nav";
 import routes from "../../routes";
 import routesForPartner from "../../routes_partner";
 
-//FormInputGlobal test input
+//FormInputGlobal test input==========================================
 import FormGlobalSearch from "../../components/FormInputGlobal/FormGlobalSearch";
+import Results from "../../components/Results/Results";
 
-//FormInputGlobal test input
+//FormInputGlobal test input==========================================
+
 const DefaultHeader = React.lazy(() =>
   import("../../components/Header/Header")
 );
@@ -48,7 +50,9 @@ class DefaultLayout extends Component {
 
   state = {
     ...INITIAL_STATE,
-    globalSearchText: ""
+    globalSearchText: "",
+    globalDataArr: [],
+    results: false
   };
 
   componentDidMount() {
@@ -63,12 +67,13 @@ class DefaultLayout extends Component {
   };
   globalSearchSubmit = e => {
     e.preventDefault();
-    const obj = { search: this.state.globalSearchText };
+    const obj = { globalSearchText: this.state.globalSearchText };
 
     this.setState({
-      globalSearchText: ""
+      globalSearchText: "",
+      results: !this.state.results
     });
-    console.log("object with global search: ", obj.inputGlobal);
+    console.log("object with global search: ", obj.globalSearchText);
 
     const getToken = () => localStorage.getItem("token");
     const token = getToken();
@@ -282,27 +287,31 @@ class DefaultLayout extends Component {
             <main className="main">
               {applyAppBreadcrumbByUserRole()}
               <Container fluid>
-                <Suspense fallback={this.loading()}>
-                  <Switch>
-                    {routes.map((route, idx) => {
-                      return route.component ? (
-                        <Route
-                          key={idx}
-                          path={route.path}
-                          exact={route.exact}
-                          name={route.name}
-                          render={props => (
-                            <route.component
-                              userContext={this.context.user}
-                              user={this.state.user}
-                              {...props}
-                            />
-                          )}
-                        />
-                      ) : null;
-                    })}
-                    {redirectToHomePage()}
-                    {/* {this.context.user.role !== 5 ? (
+                {/* тестирую компонент results======================= */}
+                {this.state.results ? (
+                  <Results />
+                ) : (
+                  <Suspense fallback={this.loading()}>
+                    <Switch>
+                      {routes.map((route, idx) => {
+                        return route.component ? (
+                          <Route
+                            key={idx}
+                            path={route.path}
+                            exact={route.exact}
+                            name={route.name}
+                            render={props => (
+                              <route.component
+                                userContext={this.context.user}
+                                user={this.state.user}
+                                {...props}
+                              />
+                            )}
+                          />
+                        ) : null;
+                      })}
+                      {redirectToHomePage()}
+                      {/* {this.context.user.role !== 5 ? (
                       <Redirect from="/" to="/dashboard" />
                     ) : (
                       <Redirect
@@ -310,8 +319,9 @@ class DefaultLayout extends Component {
                         to={`/companies/${this.context.user.company_id}`}
                       />
                     )} */}
-                  </Switch>
-                </Suspense>
+                    </Switch>
+                  </Suspense>
+                )}
               </Container>
             </main>
             {/* <AppAside fixed>
