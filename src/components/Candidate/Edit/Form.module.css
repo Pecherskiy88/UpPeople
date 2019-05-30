@@ -1,0 +1,30 @@
+.card {
+  padding: 1.25rem;
+}
+
+.cardLogo,
+.cardInputFile {
+  margin-bottom: 0.75rem;
+}
+
+.cardTitle {
+  margin-bottom: 0;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cardBody {
+  padding: 0;
+}
+
+.listGroupItem {
+  alignself: center;
+  fontsize: 1rem;
+}

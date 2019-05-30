@@ -1,0 +1,14 @@
+form {
+  text-align: center;
+}
+
+form h1 {
+  text-align: center;
+  font-weight: 300;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.text-muted {
+  text-align: center;
+}

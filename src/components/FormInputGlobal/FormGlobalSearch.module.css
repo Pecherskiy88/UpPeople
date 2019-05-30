@@ -1,0 +1,12 @@
+.Form {
+  margin: 1rem auto 0;
+}
+.Input {
+  outline: none;
+  border: 1px solid transparent;
+  padding: 0.25rem 0.625rem;
+  background-color: #374850;
+}
+.Input:focus {
+  background-color: #ffffff;
+}

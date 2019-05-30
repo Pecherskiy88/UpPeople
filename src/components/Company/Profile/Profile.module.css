@@ -1,0 +1,28 @@
+.card {
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.cardLogo {
+  margin-bottom: 0.75rem;
+}
+
+.cardBody {
+  padding: 0;
+}
+
+.cardTitle {
+  text-align: center;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cardHeading {
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: bold;
+}

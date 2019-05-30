@@ -1,0 +1,44 @@
+.btn-light {
+  background-color: #f4f4f4;
+  color: #444;
+  border-color: #ddd;
+}
+
+.btn-light:hover,
+.btn-light.active:hover {
+  color: #333;
+  background-color: #d4d4d4;
+  border-color: #adadad;
+}
+
+.btn-light:not(:disabled):not(.disabled).active:focus,
+.btn-light:not(:disabled):not(.disabled):active,
+.btn-light:not(:disabled):not(.disabled).active {
+  border-color: #adadad;
+  box-shadow: none;
+}
+
+.my-events {
+  margin: 0 0.5rem;
+  padding: 0.5rem;
+  color: var(--gray);
+  transition: 0.5s;
+}
+
+.description-block {
+  display: block;
+  font-size: 12px;
+  text-align: center;
+}
+
+.description-block > .description-header {
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.card-img-top {
+  height: 90px;
+  object-fit: contain;
+}
