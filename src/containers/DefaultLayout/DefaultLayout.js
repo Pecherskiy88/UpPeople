@@ -77,7 +77,8 @@ class DefaultLayout extends Component {
 
     const getToken = () => localStorage.getItem("token");
     const token = getToken();
-    fetch("http://192.168.1.88:8000/api/main/globalSearch", {
+    const URL = "http://192.168.1.88:8000/api";
+    fetch(`${URL}/main/globalSearch`, {
       method: "POST",
       headers: {
         Authorization: "Bearer " + token,
